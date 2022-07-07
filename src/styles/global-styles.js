@@ -4,6 +4,10 @@ export const GlobalStyle = createGlobalStyle`
     *{
         font-family: 'Roboto', sans-serif;
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        outline: none;
     }
     h1{
         font-size: 40px;
@@ -31,4 +35,4 @@ export const GlobalStyle = createGlobalStyle`
     body{
         background-color: #232F3E;
     }
-`
+`;
