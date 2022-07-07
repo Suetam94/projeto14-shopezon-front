@@ -4,14 +4,11 @@ import { ProductCard } from "./pages/ProductCard";
 
 function App() {
   return (
-    <>
-      <ProductCard />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/cadastrar" element={<SignUpPage />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/cadastrar" element={<SignUpPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
