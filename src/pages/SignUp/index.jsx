@@ -1,19 +1,38 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
-
-import Logo from '../../assets/Imgs/shopezon-logo.png'
-import * as Styled from './styles'
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Logo from '../../assets/Imgs/shopezon-logo.png';
+import * as Styled from './styles';
 
 export default function SignUpPage() {
+
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const navigate = useNavigate();
 
-    function registerUser(e){
+    async function registerUser(e){
+        
         e.preventDefault();
         if(!confirmPassword) return alert("As senhas não são iguais. Tente novamente");
+        
+        const body ={
+            name,
+            email,
+            password
+        }
+        try{
 
+            const res = await axios.post("http://localhost:5000/api/users/create",body);
+            localStorage.setItem('token',res.data.token);
+            navigate('/');
+        
+        }catch(e){
+
+            alert(e.response.data.message);
+        
+        }
     }
 
     return (
@@ -37,7 +56,7 @@ export default function SignUpPage() {
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
-                />
+                /> 
                 <input
                     type="password"
                     id="password"
