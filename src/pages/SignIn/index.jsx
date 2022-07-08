@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import Logo from '../../assets/Imgs/shopezon-logo.png'
 import * as Styled from './styles'
@@ -9,13 +9,19 @@ export default function SignInPage() {
     const [password, setPassword] = useState("");
 
 
+    async function userLogin(e){
+        e.preventDefault();
+
+    }
+    
+    
     return (
         <Styled.Container>
             <Styled.TopBar>
                 <img src={Logo} alt="" />
                 <h1>Shopezon</h1>
             </Styled.TopBar>
-            <form action="">
+            <form onSubmit={userLogin}>
                 <input
                     type="email"
                     id="email"
