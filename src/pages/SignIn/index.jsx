@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 import Logo from '../../assets/Imgs/shopezon-logo.png'
 import * as Styled from './styles'
@@ -7,10 +8,25 @@ import * as Styled from './styles'
 export default function SignInPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const navigate = useNavigate();
 
     async function userLogin(e){
         e.preventDefault();
+        const body ={
+            email,
+            password
+        }
+        try{
+
+            const res = await axios.post("http://localhost:5000/api/users/login",body);
+            localStorage.setItem('token',res.data.token);
+            navigate('/');
+        
+        }catch(e){
+
+            alert(e);
+        
+        }
 
     }
     
@@ -23,12 +39,14 @@ export default function SignInPage() {
             </Styled.TopBar>
             <form onSubmit={userLogin}>
                 <input
+                    required
                     type="email"
                     id="email"
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
+                    required
                     type="password"
                     id="password"
                     placeholder="Senha"
