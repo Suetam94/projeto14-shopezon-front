@@ -43,6 +43,7 @@ export default function SignUpPage() {
             </Styled.TopBar>
             <form onSubmit={registerUser}>
                 <input
+                    required
                     type="text"
                     id="name"
                     placeholder="Nome"
@@ -51,6 +52,7 @@ export default function SignUpPage() {
                     value={name}
                 />
                 <input
+                    required
                     type="email"
                     id="email"
                     placeholder="Email"
@@ -58,6 +60,7 @@ export default function SignUpPage() {
                     value={email}
                 /> 
                 <input
+                    required
                     type="password"
                     id="password"
                     placeholder="Senha"
@@ -68,6 +71,7 @@ export default function SignUpPage() {
                     value={password}
                 />
                 <input
+                    required
                     type="password"
                     id="confirm-password"
                     placeholder="Confirme a Senha"
