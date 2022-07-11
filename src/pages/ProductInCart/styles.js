@@ -15,5 +15,8 @@ export const Container = styled.div`
     div{
         display: flex;
     }
+    input{
+        width: 70px;
+    }
 
 `
