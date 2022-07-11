@@ -20,9 +20,9 @@ function App() {
     }
 
     try {
-      const isValid = jwtDecode(token);
+      const tokenPayload = jwtDecode(token);
 
-      if (isValid.isAdmin) {
+      if (tokenPayload.isAdmin) {
         setIsAdmin(true);
       }
     } catch (e) {
