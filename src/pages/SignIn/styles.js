@@ -10,8 +10,10 @@ export const Container = styled.div`
   margin: 25px auto;
   padding: 15px;
   background-color: #f2f2f2;
+  border-radius: 4px;
   a{
-    
+    margin-top: 10px;
+    color: #D0011B;
   }
 `;
 
