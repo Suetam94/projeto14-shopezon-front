@@ -15,7 +15,7 @@ import {
 import { useEffect, useState } from "react";
 
 export function Header() {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     const myWalletToken = localStorage.getItem("myWalletToken");
@@ -23,9 +23,7 @@ export function Header() {
     if (myWalletToken) {
       setToken(myWalletToken);
     }
-  }, []);
-
-  console.log(token);
+  }, [handleLogOff]);
 
   function handleLogOff() {
     return localStorage.removeItem("myWalletToken");
