@@ -7,6 +7,10 @@ export const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
 `;
 
 export const HeaderContent = styled.div`
@@ -20,7 +24,7 @@ export const HeaderContent = styled.div`
 
 export const HeaderLogoContainer = styled.a`
   display: flex;
-  align-items: center;
+  align-items: self-end;
   padding: 25px 10px;
   cursor: pointer;
 `;

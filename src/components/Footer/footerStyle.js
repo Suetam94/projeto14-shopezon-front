@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
-export const FooterContainer = styled.div`
+export const FooterContainer = styled.footer`
   width: 100%;
   min-height: 40px;
   background-color: #d0011b;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: sticky;
+  bottom: 0;
+  left: 0;
 `;
 
 export const FooterContent = styled.div`
