@@ -15,7 +15,7 @@ import {
 import { useEffect, useState } from "react";
 
 export function Header() {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const myWalletToken = localStorage.getItem("myWalletToken");
@@ -27,6 +27,10 @@ export function Header() {
 
   function handleLogOff() {
     return localStorage.removeItem("myWalletToken");
+  }
+
+  function handleSetToken() {
+    return setToken(localStorage.getItem("myWalletToken"));
   }
 
   return (
@@ -46,16 +50,18 @@ export function Header() {
           </HeaderSearchFormButton>
         </HeaderSearchForm>
         <HeaderLoginContent>
-          {!token ? (
-            <>
-              <a href="/cadastrar">Cadastrar</a>
-              <span>|</span>
-              <a href="/login">Entre</a>
-            </>
-          ) : (
+          {token ? (
             <>
               <a onClick={handleLogOff} href="/">
                 Sair
+              </a>
+            </>
+          ) : (
+            <>
+              <a href="/cadastrar">Cadastrar</a>
+              <span>|</span>
+              <a onClick={handleSetToken} href="/login">
+                Entre
               </a>
             </>
           )}
