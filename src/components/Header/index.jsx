@@ -14,6 +14,12 @@ import {
 } from "./headerStyle";
 
 export function Header() {
+  const token = localStorage.getItem("myWalletToken");
+
+  function handleLogOff() {
+    return localStorage.removeItem("myWalletToken");
+  }
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -31,9 +37,19 @@ export function Header() {
           </HeaderSearchFormButton>
         </HeaderSearchForm>
         <HeaderLoginContent>
-          <a href="/cadastrar">Cadastrar</a>
-          <span>|</span>
-          <a href="/login">Entre</a>
+          {!token ? (
+            <>
+              <a href="/cadastrar">Cadastrar</a>
+              <span>|</span>
+              <a href="/login">Entre</a>)
+            </>
+          ) : (
+            <>
+              <a onClick={handleLogOff} href="/logoff">
+                Sair
+              </a>
+            </>
+          )}
         </HeaderLoginContent>
       </HeaderContent>
     </HeaderContainer>

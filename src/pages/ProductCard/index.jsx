@@ -9,7 +9,7 @@ import {
 
 export function ProductCard({ productData }) {
   return (
-    <ProductCardContainer>
+    <ProductCardContainer href={`/product/${productData._id}`}>
       <ProductCardImage src={productData.imgUrl} />
       <ProductCardSummary>
         <ProductCardSummaryTitle>{productData.name}</ProductCardSummaryTitle>
@@ -17,7 +17,7 @@ export function ProductCard({ productData }) {
           Vendedor Local
         </ProductCardSummarySellerInfo>
         <ProductCardSummaryPrice>
-          R$ {(productData.price.toFixed(2) / 100).toString().replace('.', ',')}
+          R$ {(productData.price.toFixed(2) / 100).toString().replace(".", ",")}
         </ProductCardSummaryPrice>
       </ProductCardSummary>
     </ProductCardContainer>
