@@ -7,22 +7,18 @@ import {
   ProductCardSummaryPrice,
 } from "./productCardStyle";
 
-export function ProductCard() {
+export function ProductCard({ productData }) {
   return (
-    <ProductCardContainer>
-      <ProductCardImage
-        src={
-          "https://cf.shopee.com.br/file/5f9dc1b8940e11ea0f055be34a7abbe8_tn"
-        }
-      />
+    <ProductCardContainer href={`/product/${productData._id}`}>
+      <ProductCardImage src={productData.imgUrl} />
       <ProductCardSummary>
-        <ProductCardSummaryTitle>
-          Eliana Cristal Desodorante Colônia Feminina Jequiti
-        </ProductCardSummaryTitle>
+        <ProductCardSummaryTitle>{productData.name}</ProductCardSummaryTitle>
         <ProductCardSummarySellerInfo>
           Vendedor Local
         </ProductCardSummarySellerInfo>
-        <ProductCardSummaryPrice>R$ 10,00</ProductCardSummaryPrice>
+        <ProductCardSummaryPrice>
+          R$ {(productData.price.toFixed(2) / 100).toString().replace(".", ",")}
+        </ProductCardSummaryPrice>
       </ProductCardSummary>
     </ProductCardContainer>
   );

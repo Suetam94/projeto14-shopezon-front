@@ -8,6 +8,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Admin } from "./pages/Admin";
 import { useEffect, useState } from "react";
+import { ProductDetail } from "./pages/ProductDetail";
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -27,7 +28,7 @@ function App() {
       }
     } catch (e) {
       setIsAdmin(false);
-      console.warn("Token is invalid");
+      console.log("Token is invalid");
     }
   }, []);
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/cadastrar" element={<SignUpPage />} />
           <Route path="/login" element={<SignInPage />} />
           <Route path="/" element={<ProductGrid />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           <Route
             path="/produto/novo-produto"
             element={isAdmin ? <Admin /> : <Admin />}//<ProductGrid />
