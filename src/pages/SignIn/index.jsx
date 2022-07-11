@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios'
-
-import Logo from '../../assets/Imgs/shopezon-logo.png'
+import axios from 'axios';
+import { Button, Form } from 'react-bootstrap';
 import * as Styled from './styles'
 
 export default function SignInPage() {
@@ -19,12 +18,12 @@ export default function SignInPage() {
         try{
 
             const res = await axios.post("http://localhost:5000/api/users/login",body);
-            localStorage.setItem('token',res.data.token);
+            localStorage.setItem('token',res.token);
             navigate('/');
         
         }catch(e){
 
-            alert(e);
+            alert(e.response.data.message);
         
         }
 
@@ -33,28 +32,32 @@ export default function SignInPage() {
     
     return (
         <Styled.Container>
-            <Styled.TopBar>
-                <img src={Logo} alt="" />
-                <h1>Shopezon</h1>
-            </Styled.TopBar>
-            <form onSubmit={userLogin}>
-                <input
-                    required
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    required
-                    type="password"
-                    id="password"
-                    placeholder="Senha"
-                    minLength={6}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button>Entre</button>
-            </form>
+            <Form
+                noValidate
+                className="w-100"
+                onSubmit={(event) => userLogin(event)}>
+                <Form.Group className='mb-3' controlId='formEmail'>
+                    <Form.Control type="text" placeholder="Email" onChange={(e)=> setEmail(e.target.value)}  required />
+                    <Form.Text className="text-muted">
+                        Informe seu e-mail
+                    </Form.Text>
+                    <Form.Control.Feedback type="invalid">
+                        O email é obrigatório
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='formPassword'>
+                    <Form.Control type="password" placeholder="Senha" onChange={(e)=> setPassword(e.target.value)} required />
+                    <Form.Text className="text-muted">
+                        Informe sua senha (deve conter letras e números apenas)
+                    </Form.Text>
+                    <Form.Control.Feedback type="invalid">
+                        A senha é obrigatória
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Button variant="danger" type="submit">
+                    Entre
+                </Button>
+            </Form>
             <Link to='/cadastrar'>Não tem uma conta? Cadastre-se!</Link>
         </Styled.Container>
     )

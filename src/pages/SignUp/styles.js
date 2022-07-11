@@ -1,18 +1,18 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    form{
-        width: 100%;
-    }
-    a{
-        text-decoration: none;
-        color: white;
-    }
-`
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 25px auto;
+  padding: 15px;
+  background-color: #f2f2f2;
+  a{
+    
+  }
+`;
 export const TopBar = styled.div`
     display: flex;
     justify-content: center;

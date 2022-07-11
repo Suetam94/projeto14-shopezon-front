@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Button, Form } from 'react-bootstrap';
 import Logo from '../../assets/Imgs/shopezon-logo.png';
 import * as Styled from './styles';
 
@@ -9,7 +10,7 @@ export default function SignUpPage() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");;
     const navigate = useNavigate();
 
     async function registerUser(e){
@@ -29,7 +30,6 @@ export default function SignUpPage() {
             navigate('/');
         
         }catch(e){
-
             alert(e.response.data.message);
         
         }
@@ -37,49 +37,51 @@ export default function SignUpPage() {
 
     return (
         <Styled.Container>
-            <Styled.TopBar>
-                <img src={Logo} alt="" />
-                <h1>Shopezon</h1>
-            </Styled.TopBar>
-            <form onSubmit={registerUser}>
-                <input
-                    required
-                    type="text"
-                    id="name"
-                    placeholder="Nome"
-                    minLength={3}
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
-                />
-                <input
-                    required
-                    type="email"
-                    id="email"
-                    placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                /> 
-                <input
-                    required
-                    type="password"
-                    id="password"
-                    placeholder="Senha"
-                    minLength={6}
-                    pattern="[a-zA-Z0-9\s]+"
-                    title='A senha pode conter apenas números e letras'
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                />
-                <input
-                    required
-                    type="password"
-                    id="confirm-password"
-                    placeholder="Confirme a Senha"
-                    onChange={(e) => setConfirmPassword(e.target.value === password)}
-                />
-                <button>Cadastre-se</button>
-            </form>
-            <Link to='/login'>Já tem uma conta? Entre agora!</Link>
+            <Form
+                noValidate
+                className="w-100"
+                onSubmit={(event) => registerUser(event)}>
+                <Form.Group className='mb-3' controlId='formName'>
+                    <Form.Control type="text" placeholder="Nome" onChange={(e)=> setName(e.target.value)} required />
+                    <Form.Text className="text-muted">
+                        Informe seu nome
+                    </Form.Text>
+                    <Form.Control.Feedback type="invalid">
+                        O email é obrigatório
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='formEmail'>
+                    <Form.Control type="email" placeholder="Email" onChange={(e)=> setEmail(e.target.value)} required />
+                    <Form.Text className="text-muted">
+                        Informe seu e-mail
+                    </Form.Text>
+                    <Form.Control.Feedback type="invalid">
+                        O email é obrigatório
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='formPassword'>
+                    <Form.Control type="password" placeholder="Senha" onChange={(e)=> setPassword(e.target.value)} required />
+                    <Form.Text className="text-muted">
+                        Informe sua senha (deve conter letras e números apenas)
+                    </Form.Text>
+                    <Form.Control.Feedback type="invalid">
+                        A senha é obrigatória
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className='mb-3' controlId='formConfirmPassword'>
+                    <Form.Control type="password" placeholder="Confirme a Senha" onChange={(e)=>setConfirmPassword(password === e.target.value)} required />
+                    <Form.Text className="text-muted">
+                        Confirme sua Senha
+                    </Form.Text>
+                    <Form.Control.Feedback type="invalid">
+                        A senha é obrigatória
+                    </Form.Control.Feedback>
+                </Form.Group>
+                <Button variant="danger" type="submit">
+                    Cadastre-se
+                </Button>
+            </Form>
+            <Link to='/login'>Já tem uma conta? Entre!</Link>
         </Styled.Container>
     )
 }
