@@ -9,6 +9,7 @@ import { Footer } from "./components/Footer";
 import { Admin } from "./pages/Admin";
 import { useEffect, useState } from "react";
 import { ProductDetail } from "./pages/ProductDetail";
+import CartPage from "./pages/CartPage";
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -45,6 +46,7 @@ function App() {
             path="/produto/novo-produto"
             element={isAdmin ? <Admin /> : <ProductGrid />}
           />
+          <Route path="/cart/:id" element={<CartPage />}/>
         </Routes>
       </BrowserRouter>
       <Footer />
