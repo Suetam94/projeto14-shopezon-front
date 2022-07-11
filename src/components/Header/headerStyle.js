@@ -20,7 +20,7 @@ export const HeaderContent = styled.div`
 
 export const HeaderLogoContainer = styled.a`
   display: flex;
-  align-items: center;
+  align-items: self-end;
   padding: 25px 10px;
   cursor: pointer;
 `;
