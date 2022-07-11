@@ -1,16 +1,33 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {Container} from "./styles"
+import jwtDecode from "jwt-decode";
 import ProductInCart from "../ProductInCart";
-import { useEffect } from "react";
+import { Button } from "react-bootstrap";
+import axios from "axios";
 
 export default function CartPage(){
     const [cartProducts, setCartProducts] = useState([]);
     useEffect(()=>{
-        //buscar na api
+        const token = localStorage.getItem("myWalletToken");
+
+    try {
+      const tokenPayload = jwtDecode(token);
+      if(tokenPayload.userId){
+        const request = axios.get(`http://localhost:5000/api/cart/${tokenPayload.userId}`);
+        request.then((res)=> setProducts(res))
+        request.catch((err)=> console.log(err))
+    }
+    } catch (e) {
+      console.log("Token is invalid");
+    }
     },[]);
+
     return(
         <Container>
-            {cartProducts.map(({name, imgUrl, price})=><ProductInCart name={name} imgUrl={imgUrl} price={price}/>)}
+            {/*cartProducts.map(({name, imgUrl, price})=><ProductInCart name={name} imgUrl={imgUrl} price={price}/>)*/}
+            <ProductInCart name={"dsaasdasdas"} imgUrl={"https://cf.shopee.com.br/file/77b55c01a0fd3621a89bf8d1803ea8da_tn"} price={40}/>
+            <h3>Total:{}</h3>
+            <Button variant="danger">Fechar pedido</Button>
         </Container>
     )
 }

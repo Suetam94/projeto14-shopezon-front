@@ -10,4 +10,5 @@ export const Container = styled.div`
   padding: 15px;
   background-color: #f2f2f2;
   border-radius: 5px;
+  align-items: flex-end;
 `
