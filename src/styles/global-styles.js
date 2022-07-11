@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     h1{
         font-size: 40px;
-        color: white;
+        color: black;
     }
     button{
         width: 100%;
