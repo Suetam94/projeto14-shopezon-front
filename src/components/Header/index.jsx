@@ -12,9 +12,20 @@ import {
   HeaderSearchFormInput,
   HeaderLoginContent,
 } from "./headerStyle";
+import { useEffect, useState } from "react";
 
 export function Header() {
-  const token = localStorage.getItem("myWalletToken");
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    const myWalletToken = localStorage.getItem("myWalletToken");
+
+    if (myWalletToken) {
+      setToken(myWalletToken);
+    }
+  }, []);
+
+  console.log(token);
 
   function handleLogOff() {
     return localStorage.removeItem("myWalletToken");

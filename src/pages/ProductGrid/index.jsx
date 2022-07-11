@@ -23,8 +23,6 @@ export function ProductGrid() {
     getProductData();
   }, []);
 
-  console.log(productData);
-
   return (
     <ProductGridContainer>
       <ProductGridContent>

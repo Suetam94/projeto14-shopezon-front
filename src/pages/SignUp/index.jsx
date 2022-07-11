@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
-import Logo from '../../assets/Imgs/shopezon-logo.png';
 import * as Styled from './styles';
 
 export default function SignUpPage() {
@@ -26,12 +25,11 @@ export default function SignUpPage() {
         try{
 
             const res = await axios.post("http://localhost:5000/api/users/create",body);
-            localStorage.setItem('token',res.data.token);
+            localStorage.setItem('myWalletToken',res.data.token);
             navigate('/');
         
         }catch(e){
             alert(e.response.data.message);
-        
         }
     }
 

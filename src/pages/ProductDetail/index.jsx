@@ -25,8 +25,6 @@ export function ProductDetail() {
     getProduct();
   }, []);
 
-  console.log(product);
-
   return (
     <ProductDetailContainer>
       <ProductDetailContent>
