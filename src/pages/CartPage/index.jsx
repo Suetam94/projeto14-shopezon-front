@@ -3,7 +3,7 @@ import {Container} from "./styles"
 import jwtDecode from "jwt-decode";
 import ProductInCart from "../ProductInCart";
 import { Button } from "react-bootstrap";
-import axios from "axios";
+import { app } from "../../api/axios";
 
 export default function CartPage(){
     const [cartProducts, setCartProducts] = useState([]);
@@ -13,7 +13,7 @@ export default function CartPage(){
     try {
       const tokenPayload = jwtDecode(token);
       if(tokenPayload.userId){
-        const request = axios.get(`http://localhost:5000/api/cart/${tokenPayload.userId}`);
+        const request = app.get(`/cart/${tokenPayload.userId}`);
         request.then((res)=> setProducts(res))
         request.catch((err)=> console.log(err))
     }

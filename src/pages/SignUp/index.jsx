@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { app } from '../../api/axios';
 import { Button, Form } from 'react-bootstrap';
 import * as Styled from './styles';
 
@@ -24,7 +24,7 @@ export default function SignUpPage() {
         }
         try{
 
-            const res = await axios.post("http://localhost:5000/api/users/create",body);
+            const res = await app.post("/users/create",body);
             localStorage.setItem('myWalletToken',res.data.token);
             navigate('/');
         

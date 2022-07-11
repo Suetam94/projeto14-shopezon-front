@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { app } from "../../api/axios";
 import { Button, Form } from "react-bootstrap";
 import * as Styled from "./styles";
 
@@ -16,8 +16,8 @@ export default function SignInPage() {
       password,
     };
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/users/login",
+      const res = await app.post(
+        "/users/login",
         body
       );
       localStorage.setItem("myWalletToken", res.data.token);

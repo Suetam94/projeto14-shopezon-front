@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const app = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://projeto-14-shopezon-back.herokuapp.com/api",
 });
