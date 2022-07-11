@@ -41,11 +41,11 @@ export function Header() {
             <>
               <a href="/cadastrar">Cadastrar</a>
               <span>|</span>
-              <a href="/login">Entre</a>)
+              <a href="/login">Entre</a>
             </>
           ) : (
             <>
-              <a onClick={handleLogOff} href="/logoff">
+              <a onClick={handleLogOff} href="/">
                 Sair
               </a>
             </>
