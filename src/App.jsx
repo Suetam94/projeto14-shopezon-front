@@ -43,7 +43,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route
             path="/produto/novo-produto"
-            element={isAdmin ? <Admin /> : <Admin />}//<ProductGrid />
+            element={isAdmin ? <Admin /> : <ProductGrid />}
           />
         </Routes>
       </BrowserRouter>
